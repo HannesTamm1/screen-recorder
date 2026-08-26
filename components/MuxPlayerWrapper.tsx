@@ -7,7 +7,7 @@ interface MuxPlayerWrapperProps {
     title?: string;
 }
 
-export default function MuxPlayerWrapper({ playbackId, tile}: MuxPlayerWrapperProps){
+export default function MuxPlayerWrapper({ playbackId, title}: MuxPlayerWrapperProps){
     return (
         <MuxPlayer
         playbackId={playbackId}
