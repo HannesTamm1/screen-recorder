@@ -21,7 +21,7 @@ export default function Home() {
             <Video className="w-6 h-6 text-white" />
           </div>
           <h1 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight">
-            Looks looming
+            Your creations are limitless
           </h1>
           <p className="text-slate-400 text-sm md:text-base">
             
