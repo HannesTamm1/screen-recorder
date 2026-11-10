@@ -18,7 +18,8 @@ export async function createUploadUrl() {
             generated_subtitles: [
                 { language_code: 'en', name: 'English (Auto)' }
             ]
-        }
+        },
+        
       ]
     },
     cors_origin: '*',
@@ -97,5 +98,35 @@ export async function getAssetStatus(playbackId: string){
     };
     }catch (e){
     return {status: 'errored', transcriptStatus: 'errored', transcript: [] };
+  }
+}
+
+export async function generateVideoSummary(playbackId: string) {
+  try {
+
+    const assets = await mux.video.assets.list({ limit: 100 });
+    const asset = assets.data.find(a => 
+      a.playback_ids?.some(p => p.id === playbackId)
+    );
+
+    if (!asset) {
+      throw new Error('Asset not found');
+    }
+
+
+    const { getSummaryAndTags } = await import('@mux/ai/workflows');
+
+    const result = await getSummaryAndTags(asset.id, {
+      tone: 'professional',
+    });
+
+    return {
+      title: result.title,
+      summary: result.description,
+      tags: result.tags,
+    };
+  } catch (error) {
+    console.error('Error generating summary:', error);
+    return null;
   }
 }
