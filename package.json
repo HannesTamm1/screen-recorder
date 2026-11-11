@@ -12,6 +12,8 @@
     "@mux/ai": "^0.33.0",
     "@mux/mux-node": "^15.0.0",
     "@mux/mux-player-react": "^3.13.2",
+    "@types/jsonwebtoken": "^9.0.10",
+    "jsonwebtoken": "^9.0.3",
     "lucide-react": "^1.32.0",
     "next": "^16.4.6",
     "react": "19.2.8",
